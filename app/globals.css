@@ -2,3 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    line-height: 1.5;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.bg-primary {
+  background: #05445E
+}
+.text-primary {
+  color: #D4F1F4;
+}
+.text-header-white {
+  color: #FFFFFF;
+}
+.text-header-blue {
+  color: #189AB4;
+}
+.text-highlight {
+  color: #75E6DA;
+}
+.btn-primary {
+  background-color: #189AB4;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: #05445E;
+}
+.border-white {
+  border-color: #FFFFFF;
+}
+.border-accent {
+  border-color: #D4F1F4;
+}
+.icon-primary {
+  color: #D0B870;
+}
+.hover\:bg-custom:hover {
+  color:#D4F1F4 ;
+}

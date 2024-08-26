@@ -3,18 +3,45 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Logo from "../../public/assets/logo.svg";
-import { FaBars, FaTimes, FaArrowRight } from 'react-icons/fa'; // Import React Icons
+import { CgMenuRight } from "react-icons/cg";
+import { IoMdClose } from "react-icons/io";
+import { FaArrowRight } from "react-icons/fa6";
+import Link from "next/link";
 
 const navLinks = [
-  { name: "Product", dropdown: ["Features", "Integrations", "Pricing"] },
-  { name: "Company", dropdown: ["About", "Careers", "Blog"] },
-  { name: "Resources", dropdown: ["Docs", "API Reference", "Community"] },
-  { name: "Contact", dropdown: [] },
+  {
+    name: "About",
+    dropdown: [
+      { name: "Experience", path: "/about/experience" },
+      { name: "Tech", path: "/about/tech" },
+      { name: "CV", path: "/about/cv" },
+    ],
+  },
+  {
+    name: "Projects",
+    dropdown: [
+      { name: "Personal", path: "/projects/personal" },
+      { name: "Clients", path: "/projects/clients" },
+    ],
+  },
+  {
+    name: "Resources",
+    dropdown: [
+      { name: "Docs", path: "/resources/docs" },
+      { name: "API Reference", path: "/resources/api" },
+      { name: "Community", path: "/contact" },
+    ],
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+  },
 ];
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileDropdownIndex, setMobileDropdownIndex] = useState<number | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const handleMobileMenuToggle = () => {
@@ -32,65 +59,89 @@ export function Navbar() {
     }
   };
 
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 0);
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <nav className="top-0 z-50 relative flex items-center justify-between px-4 py-4 lg:px-20 lg:py-6 bg-white shadow-md">
+    <nav
+      className={`top-0 z-50 sticky flex items-center justify-between px-1 py-2 md:px-20 md:pt-3 md:pb-1 shadow-md transition-colors duration-300 ${isScrolled ? 'bg-primary' : 'bg-transparent'}`}
+    >
       <div className="flex items-center">
-        <Image src={Logo} alt="Logo" className="h-8 lg:h-10" />
+        <Link href="/">
+          <Image src={Logo} alt="Logo" priority className="h-16 md:h-18 w-auto" />
+        </Link>
       </div>
 
-      <div className="hidden lg:flex items-center gap-x-8 ml-auto">
+      <div className="hidden md:flex items-center gap-x-14 mx-auto">
         {navLinks.map((item, index) => (
           <div key={index} className="relative group">
-            <p className="text-gray-900 font-medium hover:text-gray-600 cursor-pointer">
-              {item.name}
-            </p>
-            <div
-              className={`absolute left-0 mt-2 w-48 bg-white text-gray-800 shadow-lg rounded-lg opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100`}
-            >
-              {item.dropdown.map((link, linkIndex) => (
-                <a
-                  key={linkIndex}
-                  href="#"
-                  className="block px-4 py-2 hover:bg-gray-100"
+            {item.dropdown ? (
+              <>
+                <p className="text-primary font-semibold hover:opacity-50 cursor-pointer">
+                  {item.name}
+                </p>
+                <div
+                  className={`absolute left-0 mt-2 w-48 bg-primary text-primary shadow-lg rounded-lg opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100`}
                 >
-                  {link}
-                </a>
-              ))}
-            </div>
+                  {item.dropdown.map((link, linkIndex) =>
+                    typeof link === "string" ? (
+                      <a
+                        key={linkIndex}
+                        href={"#"}
+                        className="block px-4 py-2 hover:opacity-50 text-primary"
+                      >
+                        {link}
+                      </a>
+                    ) : (
+                      <Link
+                        key={linkIndex}
+                        href={link.path}
+                        className="block px-4 py-2 hover:opacity-50"
+                      >
+                        {link.name}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </>
+            ) : (
+              <Link
+                href={item.path || "#"}
+                className="text-primary font-semibold hover:opacity-50 cursor-pointer"
+              >
+                {item.name}
+              </Link>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="flex items-center gap-x-4 lg:hidden">
+      <div className="flex items-center gap-x-4 md:hidden">
         <button
-          className="text-gray-900"
           onClick={handleMobileMenuToggle}
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? (
-            <FaTimes size={24} />
-          ) : (
-            <FaBars size={26} />
-          )}
+          <CgMenuRight size={28} className="icon-primary" />
         </button>
       </div>
 
       {isMobileMenuOpen && (
         <>
-          {/* Blurred background */}
           <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
 
-          {/* Mobile Menu */}
           <div
             ref={menuRef}
-            className="fixed top-10 right-10 bg-white rounded-xl shadow-xl z-50 p-4"
+            className="fixed top-10 right-10 bg-primary rounded-xl shadow-xl z-50 p-4"
             style={{
               width: "calc(100% - 40px)",
               maxWidth: "calc(100% - 40px)",
@@ -105,40 +156,56 @@ export function Navbar() {
                 aria-label="Close menu"
                 style={{ zIndex: 1000 }}
               >
-                <FaTimes size={32} />
+                <IoMdClose size={32} style={{ color: "#D0B870" }} />
               </button>
               <div className="mt-12">
                 {navLinks.map((item, index) => (
-                  <div key={index} className="relative">
+                  <div key={index} className="relative group">
                     <p
-                      className="text-gray-900 font-medium py-2 cursor-pointer flex items-center"
+                      className="text-primary font-semibold py-2 cursor-pointer flex items-center hover:opacity-50"
                       onClick={() => handleMobileDropdownClick(index)}
                     >
                       {item.name}
-                      {item.dropdown.length > 0 && (
+                      {item.dropdown && item.dropdown.length >= 0 && (
                         <FaArrowRight
                           size={15}
                           className={`ml-2 transition-transform ${
-                            mobileDropdownIndex === index ? 'rotate-90' : 'rotate-0'
+                            mobileDropdownIndex === index
+                              ? "rotate-90"
+                              : "rotate-0"
                           }`}
                         />
                       )}
                     </p>
-                    {mobileDropdownIndex === index && (
-                      <div className="mt-2 bg-gray-100 rounded-lg shadow-sm">
-                        {item.dropdown.map((link, linkIndex) => (
-                          <a
-                            key={linkIndex}
-                            href="#"
-                            className="block px-4 py-2 text-gray-900 hover:bg-gray-200"
-                            onClick={() => {
-                              setIsMobileMenuOpen(false);
-                              setMobileDropdownIndex(null);
-                            }}
-                          >
-                            {link}
-                          </a>
-                        ))}
+                    {mobileDropdownIndex === index && item.dropdown && (
+                      <div className="mt-2  rounded-lg shadow-sm">
+                        {item.dropdown.map((link, linkIndex) =>
+                          typeof link === "string" ? (
+                            <a
+                              key={linkIndex}
+                              href={"#"}
+                              className="block px-4 py-2 text-primary hover:opacity-50"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setMobileDropdownIndex(null);
+                              }}
+                            >
+                              {link}
+                            </a>
+                          ) : (
+                            <Link
+                              key={linkIndex}
+                              href={link.path}
+                              className="block px-4 py-2 text-primary hover:opacity-50"
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                setMobileDropdownIndex(null);
+                              }}
+                            >
+                              {link.name}
+                            </Link>
+                          )
+                        )}
                       </div>
                     )}
                   </div>
