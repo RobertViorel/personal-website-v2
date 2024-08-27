@@ -10,9 +10,11 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['Suisse Int\'l', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        mono: ['SF Mono', 'Fira Code', 'Roboto Mono', 'Menlo', 'monospace'],
       },
     },
   },
   plugins: [],
 };
+
 export default config;

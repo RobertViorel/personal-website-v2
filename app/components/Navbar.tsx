@@ -9,33 +9,10 @@ import { FaArrowRight } from "react-icons/fa6";
 import Link from "next/link";
 
 const navLinks = [
-  {
-    name: "About",
-    dropdown: [
-      { name: "Experience", path: "/about/experience" },
-      { name: "Tech", path: "/about/tech" },
-      { name: "CV", path: "/about/cv" },
-    ],
-  },
-  {
-    name: "Projects",
-    dropdown: [
-      { name: "Personal", path: "/projects/personal" },
-      { name: "Clients", path: "/projects/clients" },
-    ],
-  },
-  {
-    name: "Resources",
-    dropdown: [
-      { name: "Docs", path: "/resources/docs" },
-      { name: "API Reference", path: "/resources/api" },
-      { name: "Community", path: "/contact" },
-    ],
-  },
-  {
-    name: "Contact",
-    path: "/contact",
-  },
+  { name: "About", dropdown: [{ name: "Experience", path: "/about/experience" }, { name: "Tech", path: "/about/tech" }, { name: "CV", path: "/about/cv" }] },
+  { name: "Projects", dropdown: [{ name: "Personal", path: "/projects/personal" }, { name: "Clients", path: "/projects/clients" }] },
+  { name: "Resources", dropdown: [{ name: "Docs", path: "/resources/docs" }, { name: "API Reference", path: "/resources/api" }, { name: "Community", path: "/contact" }] },
+  { name: "Contact", path: "/contact" },
 ];
 
 export function Navbar() {
@@ -52,7 +29,7 @@ export function Navbar() {
     setMobileDropdownIndex((prev) => (prev === index ? null : index));
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = (event: MouseEvent | TouchEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setIsMobileMenuOpen(false);
       setMobileDropdownIndex(null);
@@ -65,9 +42,11 @@ export function Navbar() {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside); // Handle touch events on mobile
     window.addEventListener("scroll", handleScroll);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -82,42 +61,33 @@ export function Navbar() {
         </Link>
       </div>
 
+      {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-x-14 mx-auto">
         {navLinks.map((item, index) => (
           <div key={index} className="relative group">
             {item.dropdown ? (
               <>
-                <p className="text-primary font-semibold hover:opacity-50 cursor-pointer">
+                <p className="text-primary font-semibold font-mono hover:opacity-50 cursor-pointer">
                   {item.name}
                 </p>
                 <div
-                  className={`absolute left-0 mt-2 w-48 bg-primary text-primary shadow-lg rounded-lg opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100`}
+                  className={`absolute left-0 mt-2 w-48 bg-primary text-primary font-mono shadow-lg rounded-lg opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 z-40`}
                 >
-                  {item.dropdown.map((link, linkIndex) =>
-                    typeof link === "string" ? (
-                      <a
-                        key={linkIndex}
-                        href={"#"}
-                        className="block px-4 py-2 hover:opacity-50 text-primary"
-                      >
-                        {link}
-                      </a>
-                    ) : (
-                      <Link
-                        key={linkIndex}
-                        href={link.path}
-                        className="block px-4 py-2 hover:opacity-50"
-                      >
-                        {link.name}
-                      </Link>
-                    )
-                  )}
+                  {item.dropdown.map((link, linkIndex) => (
+                    <Link
+                      key={linkIndex}
+                      href={link.path}
+                      className="block px-4 py-2 hover:opacity-50 font-mono"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
                 </div>
               </>
             ) : (
               <Link
                 href={item.path || "#"}
-                className="text-primary font-semibold hover:opacity-50 cursor-pointer"
+                className="text-primary font-semibold hover:opacity-50 cursor-pointer font-mono"
               >
                 {item.name}
               </Link>
@@ -126,6 +96,7 @@ export function Navbar() {
         ))}
       </div>
 
+      {/* Mobile Menu Toggle */}
       <div className="flex items-center gap-x-4 md:hidden">
         <button
           onClick={handleMobileMenuToggle}
@@ -135,6 +106,7 @@ export function Navbar() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <>
           <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
@@ -161,52 +133,53 @@ export function Navbar() {
               <div className="mt-12">
                 {navLinks.map((item, index) => (
                   <div key={index} className="relative group">
-                    <p
-                      className="text-primary font-semibold py-2 cursor-pointer flex items-center hover:opacity-50"
-                      onClick={() => handleMobileDropdownClick(index)}
-                    >
-                      {item.name}
-                      {item.dropdown && item.dropdown.length >= 0 && (
-                        <FaArrowRight
-                          size={15}
-                          className={`ml-2 transition-transform ${
-                            mobileDropdownIndex === index
-                              ? "rotate-90"
-                              : "rotate-0"
-                          }`}
-                        />
-                      )}
-                    </p>
-                    {mobileDropdownIndex === index && item.dropdown && (
-                      <div className="mt-2  rounded-lg shadow-sm">
-                        {item.dropdown.map((link, linkIndex) =>
-                          typeof link === "string" ? (
-                            <a
-                              key={linkIndex}
-                              href={"#"}
-                              className="block px-4 py-2 text-primary hover:opacity-50"
-                              onClick={() => {
-                                setIsMobileMenuOpen(false);
-                                setMobileDropdownIndex(null);
-                              }}
-                            >
-                              {link}
-                            </a>
-                          ) : (
-                            <Link
-                              key={linkIndex}
-                              href={link.path}
-                              className="block px-4 py-2 text-primary hover:opacity-50"
-                              onClick={() => {
-                                setIsMobileMenuOpen(false);
-                                setMobileDropdownIndex(null);
-                              }}
-                            >
-                              {link.name}
-                            </Link>
-                          )
+                    {item.dropdown ? (
+                      <>
+                        <p
+                          className="text-primary font-semibold font-mono py-2 cursor-pointer flex items-center hover:opacity-50"
+                          onClick={() => handleMobileDropdownClick(index)}
+                        >
+                          {item.name}
+                          {item.dropdown && item.dropdown.length > 0 && (
+                            <FaArrowRight
+                              size={15}
+                              className={`ml-2 transition-transform ${
+                                mobileDropdownIndex === index
+                                  ? "rotate-90"
+                                  : "rotate-0"
+                              }`}
+                            />
+                          )}
+                        </p>
+                        {mobileDropdownIndex === index && (
+                          <div className="mt-2 rounded-lg shadow-sm z-50">
+                            {item.dropdown.map((link, linkIndex) => (
+                              <Link
+                                key={linkIndex}
+                                href={link.path}
+                                className="block px-4 py-2 text-primary font-mono hover:opacity-50"
+                                onClick={() => {
+                                  setIsMobileMenuOpen(false);
+                                  setMobileDropdownIndex(null);
+                                }}
+                              >
+                                {link.name}
+                              </Link>
+                            ))}
+                          </div>
                         )}
-                      </div>
+                      </>
+                    ) : (
+                      <Link
+                        href={item.path || "#"}
+                        className="block text-primary font-semibold py-2 cursor-pointer font-mono hover:opacity-50"
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          setMobileDropdownIndex(null);
+                        }}
+                      >
+                        {item.name}
+                      </Link>
                     )}
                   </div>
                 ))}
