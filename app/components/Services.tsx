@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { fadeIn, staggerContainer } from "@/src/utils/animation"; // Adjust the import path as needed
+import { fadeIn, staggerContainer } from "@/app/utils/animation"; // Adjust the import path as needed
 import Tilt from "react-parallax-tilt";
 
 interface ServiceCardProps {
@@ -87,7 +87,7 @@ export function Services() {
         Services
       </motion.h2>
       <motion.p
-        className="px-8 text-gray-400 max-w-xl mb-8"
+        className="px-8 text-gray-400 max-w-xl mb-16"
         variants={fadeIn("up", "tween", 0.2, 1)}
       >
         Hi there! I'm Robert, a passionate junior web developer on a journey to turn my coding dreams into reality.

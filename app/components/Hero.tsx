@@ -6,7 +6,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { textVariant, fadeIn, zoomIn } from "@/src/utils/animation";
+import { textVariant, fadeIn, zoomIn } from "@/app/utils/animation";
 
 export function Hero() {
   const { ref, inView } = useInView({
