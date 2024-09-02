@@ -6,6 +6,7 @@ import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/d
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { TECHNOLOGIES } from '../constants/constants';
+import { CanvasLoader } from './CanvasLoader';
 
 export function Ball({ imgUrl }: { imgUrl: string }) {
   const [decal] = useTexture([imgUrl]);
@@ -35,79 +36,82 @@ export function Ball({ imgUrl }: { imgUrl: string }) {
 
 
 export function BallCanvas({ icon }: { icon: string }) {
-  return (
-    <Canvas frameloop='demand' dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
-      <Suspense fallback={""}>
-        <OrbitControls enableZoom={false} />
-        <Ball imgUrl={icon} />
-      </Suspense>
-      <Preload all />
-    </Canvas>
-  );
-}
+    return (
+      <div className="w-full h-full max-w-full max-h-full overflow-hidden">
+        <Canvas frameloop='demand' dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
+          <Suspense fallback={<CanvasLoader />}>
+            <OrbitControls enableZoom={false} />
+            <Ball imgUrl={icon} />
+          </Suspense>
+          <Preload all />
+        </Canvas>
+      </div>
+    );
+  }
 
 
-export function Tech() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
-  const controls = useAnimation();
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    } else {
-      controls.start("hidden");
-    }
-  }, [inView, controls]);
+  export function Tech() {
+    const { ref, inView } = useInView({ threshold: 0.1 });
+    const controls = useAnimation();
+    const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    useEffect(() => {
+      if (inView) {
+        controls.start("show");
+      } else {
+        controls.start("hidden");
+      }
+    }, [inView, controls]);
 
-  return (
-    <motion.section
-      ref={ref}
-      className="container mx-auto pb-10 my-10"
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-      }}
-    >
-      <motion.h3
-        className="px-8 font-mono text-[#D0B870] mb-4"
-        initial={{ opacity: 0, y: -20 }}
-        animate={controls}
-        variants={{
-          hidden: { opacity: 0, y: -20 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-        }}
-      >
-        Technologies
-      </motion.h3>
-      <motion.p
-        className="px-8 text-gray-400 max-w-xl mb-16"
-        initial={{ opacity: 0, y: 20 }}
+    useEffect(() => {
+      setIsMounted(true);
+    }, []);
+
+    return (
+      <motion.section
+        ref={ref}
+        className="container mx-auto pb-10 my-10 px-4 sm:px-6 lg:px-8"
+        initial="hidden"
         animate={controls}
         variants={{
           hidden: { opacity: 0, y: 20 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } },
+          show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
         }}
       >
-        Discover the technologies I work with and use in my projects. From front-end frameworks to back-end tools, I strive to use the best technologies to deliver exceptional results.
-      </motion.p>
-      <div className="flex flex-row flex-wrap justify-center gap-10">
-        {isMounted && (
-          <>
-            {TECHNOLOGIES.map((technology, index) => (
-              <div className='w-28 h-28' key={technology.name}>
-                <BallCanvas icon={technology.icon} />
-              </div>
-            ))}
-          </>
-        )}
-      </div>
-    </motion.section>
-  );
-}
+        <motion.h3
+          className="px-8 font-mono text-[#D0B870] mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: -20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+          }}
+        >
+          Technologies
+        </motion.h3>
+        <motion.p
+          className="px-8 text-gray-400 max-w-xl mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } },
+          }}
+        >
+          Discover the technologies I work with and use in my projects. From front-end frameworks to back-end tools, I strive to use the best technologies to deliver exceptional results.
+        </motion.p>
+        <div className="flex flex-row flex-wrap justify-center gap-10">
+          {isMounted && (
+            <>
+              {TECHNOLOGIES.map((technology, index) => (
+                <div className="w-24 h-24 max-w-full max-h-full" key={technology.name}>
+                  <BallCanvas icon={technology.icon} />
+                </div>
+              ))}
+            </>
+          )}
+        </div>
+      </motion.section>
+    );
+  }

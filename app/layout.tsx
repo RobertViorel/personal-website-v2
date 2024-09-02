@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import MouseMovement from "./components/MouseMovement";
+import { CookieConsent } from "./components/CookieConsent"; // Adjust the import path as needed
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Navbar />
         <MouseMovement />
         <main>{children}</main>
+        <CookieConsent />
       </body>
     </html>
   );

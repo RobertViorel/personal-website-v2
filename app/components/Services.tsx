@@ -40,7 +40,7 @@ const ServiceCard = ({ title, description, icon, index }: ServiceCardProps) => {
       <motion.div
         ref={ref}
         className="bg-transparent p-6 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col h-full"
-        variants={fadeIn("up", "tween", index * 0.2, 1)} // Apply stagger delay based on index
+        variants={fadeIn("up", "tween", index * 0.2, 1)}
         initial="hidden"
         animate={controls}
         transition={{ duration: 0.5 }}
@@ -92,7 +92,7 @@ export function Services() {
       >
         Hi there! I'm Robert, a passionate junior web developer on a journey to turn my coding dreams into reality.
       </motion.p>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className=" container mx-auto flex flex-wrap justify-center gap-8">
         {isMounted && (
           <>
             <ServiceCard
