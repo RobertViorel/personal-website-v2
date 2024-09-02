@@ -1,13 +1,25 @@
 import { Variants } from 'framer-motion';
 
-export const textVariant = (delay: number): Variants => ({
-  hidden: { y: -50, opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: { type: 'spring', duration: 1.25, delay }
-  }
-});
+// src/utils/motion.ts
+export const textVariant = (delay: number) => {
+  return {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: delay,
+        type: 'spring',
+        bounce: 0.5,
+      },
+    },
+  };
+};
+
 
 export const fadeIn = (
   direction: 'left' | 'right' | 'up' | 'down',

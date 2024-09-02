@@ -21,8 +21,8 @@ export default function MouseMovement() {
     <div
       className="fixed pointer-events-none w-44 h-44 rounded-full bg-white opacity-50 mix-blend-overlay z-50 transition-transform duration-100 ease-out"
       style={{
-        top: position.y - 78, // centering
-        left: position.x - 78,
+        top: `${position.y - 78}px`, // centering
+        left: `${position.x - 78}px`,
         background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%)',
       }}
     />

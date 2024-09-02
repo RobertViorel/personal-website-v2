@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { fadeIn, staggerContainer } from "@/src/types/animation"; // Adjust the import path as needed
+import { fadeIn, staggerContainer } from "@/src/utils/animation"; // Adjust the import path as needed
 import Tilt from "react-parallax-tilt";
 
 interface ServiceCardProps {
@@ -48,7 +48,7 @@ const ServiceCard = ({ title, description, icon, index }: ServiceCardProps) => {
         <div className="flex items-center justify-center mb-4">
           {icon}
         </div>
-        <h3 className="text-lg text-primary font-semibold text-center">{title}</h3>
+        <h3 className="text-lg text-primary font-semibold font-mono text-center">{title}</h3>
         <p className="mt-2 text-gray-400 text-center flex-grow">{description}</p>
       </motion.div>
     </Tilt>
@@ -99,7 +99,7 @@ export function Services() {
               title="UI/UX Design"
               description="Designing user-friendly interfaces."
               icon={<img src="/assets/graphic.png" alt="UI/UX Design" className="w-14 h-14" />}
-              index={0} // index = control the delay
+              index={0} // index to control the delay
             />
             <ServiceCard
               title="Web Development"

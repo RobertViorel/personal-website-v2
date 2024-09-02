@@ -9,15 +9,37 @@ import { FaArrowRight } from "react-icons/fa6";
 import Link from "next/link";
 
 const navLinks = [
-  { name: "About", dropdown: [{ name: "Experience", path: "/about/experience" }, { name: "Tech", path: "/about/tech" }, { name: "CV", path: "/about/cv" }] },
-  { name: "Projects", dropdown: [{ name: "Personal", path: "/projects/personal" }, { name: "Clients", path: "/projects/clients" }] },
-  { name: "Resources", dropdown: [{ name: "Docs", path: "/resources/docs" }, { name: "API Reference", path: "/resources/api" }, { name: "Community", path: "/contact" }] },
-  { name: "Contact", path: "/contact" },
+  {
+    name: "About",
+    dropdown: [
+      { name: "Experience", path: "/about/experience" },
+      { name: "Tech", path: "/about/tech" },
+      { name: "CV", path: "/about/cv" },
+    ],
+  },
+  {
+    name: "Projects",
+    dropdown: [
+      { name: "Personal", path: "/projects/personal" },
+      { name: "Clients", path: "/projects/clients" },
+    ],
+  },
+  {
+    name: "Resources",
+    dropdown: [
+      { name: "Docs", path: "/resources/docs" },
+      { name: "API Reference", path: "/resources/api" },
+      { name: "Community", path: "/contact" },
+    ],
+  },
+  { name: "Contact", path: "pages/contact" },
 ];
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [mobileDropdownIndex, setMobileDropdownIndex] = useState<number | null>(null);
+  const [mobileDropdownIndex, setMobileDropdownIndex] = useState<number | null>(
+    null
+  );
   const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -53,11 +75,18 @@ export function Navbar() {
 
   return (
     <nav
-      className={`top-0 z-50 sticky flex items-center justify-between px-1 py-2 md:px-20 md:pt-3 md:pb-1 shadow-md transition-colors duration-300 ${isScrolled ? 'bg-primary' : 'bg-transparent'}`}
+      className={`top-0 z-50 sticky flex items-center justify-between px-1 py-2 md:px-20 md:pt-3 md:pb-1 shadow-md transition-colors duration-300 ${
+        isScrolled ? "bg-primary" : "bg-transparent"
+      }`}
     >
       <div className="flex items-center">
         <Link href="/">
-          <Image src={Logo} alt="Logo" priority className="h-16 md:h-18 w-auto" />
+          <Image
+            src={Logo}
+            alt="Logo"
+            priority
+            className="h-16 md:h-18 w-auto"
+          />
         </Link>
       </div>
 
@@ -98,10 +127,7 @@ export function Navbar() {
 
       {/* Mobile Menu Toggle */}
       <div className="flex items-center gap-x-4 md:hidden">
-        <button
-          onClick={handleMobileMenuToggle}
-          aria-label="Toggle menu"
-        >
+        <button onClick={handleMobileMenuToggle} aria-label="Toggle menu">
           <CgMenuRight size={28} className="icon-primary" />
         </button>
       </div>

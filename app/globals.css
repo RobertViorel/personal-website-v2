@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 *{
     margin: 0;
     padding: 0;
@@ -14,6 +16,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 
 
 .bg-primary {
@@ -39,15 +42,17 @@
 .btn-primary:hover {
   background-color: #05445E;
 }
-.border-white {
-  border-color: #FFFFFF;
-}
+
 .border-accent {
-  border-color: #D4F1F4;
+  border-color: #039cad;
 }
 .icon-primary {
   color: #D0B870;
 }
 .hover\:bg-custom:hover {
-  color:#D4F1F4 ;
+  color:#04b7cb ;
+}
+
+html {
+  --line-color: #D0B870;
 }

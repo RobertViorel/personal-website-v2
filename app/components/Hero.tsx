@@ -1,9 +1,12 @@
+// to do: left animated line as on github
+
+
 "use client";
 
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { textVariant, fadeIn, zoomIn } from "@/src/types/animation";
+import { textVariant, fadeIn, zoomIn } from "@/src/utils/animation";
 
 export function Hero() {
   const { ref, inView } = useInView({
