@@ -1,10 +1,11 @@
-// Home.tsx
+
 import Experience from "./components/Experience";
 import { Hero } from "./components/Hero";
 import { Services } from "./components/Services";
 import { StarsCanvas } from "./components/StarsCanvas";
 import { Tech } from "./components/Tech";
-import { Footer } from "./components/Footer"
+import { AboutMe } from "./components/AboutMe";
+import { Cta } from "./components/Cta";
 
 export default function Home() {
   return (
@@ -15,8 +16,9 @@ export default function Home() {
         <Services />
         <Experience />
         <Tech />
+        <AboutMe />
+        <Cta />
       </div>
-      <Footer />
     </div>
   );
 }

@@ -46,9 +46,6 @@ body {
   color: #FFFFFF;
 }
 
-.btn-primary:hover {
-  background-color: #05445E;
-}
 
 .border-accent {
   border-color: #039cad;
@@ -59,6 +56,13 @@ body {
 .hover\:bg-custom:hover {
   color:#04b7cb ;
 }
+
+.gold-gradient {
+  background: "#F4ED95";
+  background: linear-gradient(90.13deg, #F4ED95 1.9%, #935F25 97.5%);
+  background: -webkit-linear-gradient(-90.13deg, #F4ED95 1.9%, #935F25 97.5%)
+}
+
 
 html {
   --line-color: #D0B870;
@@ -115,4 +119,15 @@ html {
 .canvas-container {
   max-width: 100%;
   overflow: hidden;
+}
+.earth-container {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  padding: 2rem;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
 }

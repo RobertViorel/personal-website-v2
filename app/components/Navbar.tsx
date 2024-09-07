@@ -7,33 +7,7 @@ import { CgMenuRight } from "react-icons/cg";
 import { IoMdClose } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa6";
 import Link from "next/link";
-
-const navLinks = [
-  {
-    name: "About",
-    dropdown: [
-      { name: "Experience", path: "/about/experience" },
-      { name: "Tech", path: "/about/tech" },
-      { name: "CV", path: "/about/cv" },
-    ],
-  },
-  {
-    name: "Projects",
-    dropdown: [
-      { name: "Personal", path: "/projects/personal" },
-      { name: "Clients", path: "/projects/clients" },
-    ],
-  },
-  {
-    name: "Resources",
-    dropdown: [
-      { name: "Docs", path: "/resources/docs" },
-      { name: "API Reference", path: "/resources/api" },
-      { name: "Community", path: "/contact" },
-    ],
-  },
-  { name: "Contact", path: "pages/contact" },
-];
+import { navLinks } from "../constants/constants";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -197,7 +171,7 @@ export function Navbar() {
                       </>
                     ) : (
                       <Link
-                        href={item.path || "#"}
+                        href={item.path}
                         className="block text-primary font-semibold py-2 cursor-pointer font-mono hover:opacity-50"
                         onClick={() => {
                           setIsMobileMenuOpen(false);

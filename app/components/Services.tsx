@@ -35,7 +35,7 @@ const ServiceCard = ({ title, description, icon, index }: ServiceCardProps) => {
       glareMaxOpacity={0.3}
       scale={1.02}
       gyroscope
-      className="w-full max-w-[400px] flex flex-col justify-between"
+      className="w-full max-w-[400px] flex flex-col justify-between my-5"
     >
       <motion.div
         ref={ref}
@@ -92,7 +92,7 @@ export function Services() {
       >
         Hi there! I'm Robert, a passionate junior web developer on a journey to turn my coding dreams into reality.
       </motion.p>
-      <div className=" container mx-auto flex flex-wrap justify-center gap-8">
+      <div className=" container mx-auto flex flex-wrap justify-center gap-8 mb-10">
         {isMounted && (
           <>
             <ServiceCard

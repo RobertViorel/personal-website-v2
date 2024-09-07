@@ -4,44 +4,8 @@
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { motion } from "framer-motion";
+import { steps } from "../constants/constants";
 
-interface Step {
-  title: string;
-  description: string;
-  icon: string;
-  date: string;
-}
-
-const steps: Step[] = [
-  {
-    title: "Free Strategy Advice",
-    description:
-      "I provide a personal initial consultation via phone, Zoom or Skype, during which we assess your project requirements and collaboratively develop initial concepts.",
-    icon: "/assets/develop.png", // Corrected path
-    date: "Step 1",
-  },
-  {
-    title: "Your Personalized Cost Estimate",
-    description:
-      "Within 3 working days, you’ll receive an individual cost estimate tailored to your project’s specific requirements. My offers are modular, providing you the flexibility to adjust the project’s scope according to your needs.",
-    icon: "/assets/develop.png",
-    date: "Step 2",
-  },
-  {
-    title: "Realizing Your Online Presence",
-    description:
-      "Once the website design is finalized, I begin the development phase. I meticulously code your responsive website or online shop to meet your specific needs. Throughout the process, I perform quality assurance checks to ensure your online presence exceeds performance standards and your expectations.",
-    icon: "/assets/develop.png",
-    date: "Step 3",
-  },
-  {
-    title: "Deploying Your Website",
-    description:
-      "Upon the completion of the project, we will conduct a comprehensive review of the results and provide you with detailed instructions on how to maintain and manage your website.",
-    icon: "/assets/develop.png",
-    date: "Step 4",
-  },
-];
 
 export default function Experience() {
   return (

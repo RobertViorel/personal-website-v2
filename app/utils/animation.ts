@@ -1,6 +1,5 @@
 import { Variants } from 'framer-motion';
 
-// src/utils/motion.ts
 export const textVariant = (delay: number) => {
   return {
     hidden: {

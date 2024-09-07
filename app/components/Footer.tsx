@@ -35,7 +35,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="flex flex-col lg:flex-row items-center justify-between py-6 sm:py-16 space-y-6 lg:space-y-0">
+        <section className="flex flex-col lg:flex-row items-center justify-between py-6 space-y-6 lg:space-y-0">
 
 
           <motion.div
@@ -106,7 +106,7 @@ export function Footer() {
             animate={controls}
             variants={fadeIn("up", "tween", 0.4, 1)}
           >
-            <div className="flex items-center justify-center p-5 space-x-3">
+            <div className="flex items-center justify-center space-x-3">
               <FaEnvelope size={30} className="text-[#d0b870]" />
               <a
                 href="mailto:robert@dumitrurobert.com"

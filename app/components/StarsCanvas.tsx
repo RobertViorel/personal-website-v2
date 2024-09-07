@@ -6,10 +6,13 @@ import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
 import * as THREE from 'three';
 
+// Define the Stars component
 export function Stars(props: any) {
   const ref = useRef<THREE.Points>(null!);
+  // Generate random star positions within a sphere
   const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.2 }));
 
+  // Update rotation on each frame
   useFrame((state, delta) => {
     if (ref.current) {
       ref.current.rotation.x -= delta / 10;
@@ -24,7 +27,7 @@ export function Stars(props: any) {
           transparent
           color="#f272c8"
           size={0.002}
-          sizeAttenuation={true}
+          sizeAttenuation
           depthWrite={false}
         />
       </Points>
@@ -32,9 +35,10 @@ export function Stars(props: any) {
   );
 }
 
+// Define the StarsCanvas component
 export function StarsCanvas() {
   return (
-    <div className="w-full h-auto absolute inset-0 z-[-1]">
+    <div className="w-full h-full absolute inset-0 z-[-1]"> {/* Use h-full for full height */}
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <Stars />

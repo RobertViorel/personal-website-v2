@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import MouseMovement from "./components/MouseMovement";
 import { CookieConsent } from "./components/CookieConsent"; // Adjust the import path as needed
+import { Footer } from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,10 +36,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-primary ${inter.className}`}>
+      <body className={`bg-primary ${inter.className} flex flex-col min-h-screen`}>
         <Navbar />
         <MouseMovement />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
+        <Footer />
         <CookieConsent />
       </body>
     </html>
