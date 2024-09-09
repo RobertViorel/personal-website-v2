@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import Logo from "../../public/assets/logo.svg";
 import { CgMenuRight } from "react-icons/cg";
 import { IoMdClose } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa6";
@@ -54,14 +53,16 @@ export function Navbar() {
       }`}
     >
       <div className="flex items-center">
-        <Link href="/">
-          <Image
-            src={Logo}
-            alt="Logo"
-            priority
-            className="h-16 md:h-18 w-auto"
-          />
-        </Link>
+      <Link href="/">
+      <Image
+        src="/assets/Logo.svg"
+        alt="Logo"
+        width={64}
+        height={64}
+        priority
+        className="h-16 md:h-18 w-auto"
+      />
+    </Link>
       </div>
 
       {/* Desktop Menu */}
