@@ -11,7 +11,7 @@ export function HoloBall() {
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 1, 1]} />
           <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
-            <mesh scale={2.5}>
+            <mesh scale={2}>
               <icosahedronGeometry args={[1, 1]} />
               <meshStandardMaterial
                 color="#00ffff"

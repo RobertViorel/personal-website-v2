@@ -57,11 +57,11 @@ body {
   color:#04b7cb ;
 }
 
-.gold-gradient {
-  background: "#F4ED95";
+/* .gold-gradient {
   background: linear-gradient(90.13deg, #F4ED95 1.9%, #935F25 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #F4ED95 1.9%, #935F25 97.5%)
-}
+  background: -webkit-linear-gradient(-90.13deg, #F4ED95 1.9%, #935F25 97.5%);
+} */
+
 
 
 html {
@@ -119,12 +119,6 @@ html {
 .canvas-container {
   max-width: 100%;
   overflow: hidden;
-}
-.earth-container {
-  width: 100%;
-  height: 60vh;
-  position: relative;
-  padding: 2rem;
 }
 
 canvas {

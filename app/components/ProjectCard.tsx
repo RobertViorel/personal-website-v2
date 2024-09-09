@@ -5,7 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import { github } from "@/public/assets";
 import { fadeIn } from "../utils/animation";
-import { colorMap } from "../utils/collorMap"; // Adjust the path if needed
+import { colorMap } from "../utils/collorMap";
 import { useInView } from "react-intersection-observer";
 
 interface Tag {
@@ -59,17 +59,21 @@ export function ProjectCard({
     >
       <div className="relative w-full h-[230px]">
         {typeof image === "string" ? (
-          <img
+          <Image
             src={image}
             alt="project_image"
-            className="w-full h-full object-cover rounded-2xl"
+            priority
+            layout="fill"
+            objectFit="cover"
+            className="rounded-2xl"
           />
         ) : (
           <Image
             src={image}
             alt="project_image"
-            priority // Add priority here
-            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            priority
+            layout="fill"
+            objectFit="cover"
             className="rounded-2xl"
           />
         )}
@@ -79,17 +83,19 @@ export function ProjectCard({
             onClick={() => window.open(source_code_link, "_blank")}
             className="gold-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
           >
-            <img
+            <Image
               src={getLinkIcon()}
               alt="source code"
-              className="w-1/2 h-1/2 object-contain"
+              width={20}
+              height={20}
+              className="object-contain"
             />
           </div>
         </div>
       </div>
 
       <div className="mt-5">
-        <h3 className="text-primary font-bold text-[24px]">{name}</h3>
+        <h3 className="text-primary font-mono font-semibold text-lg">{name}</h3>
         <p className="mt-2 text-gray-400 text-[14px]">{description}</p>
       </div>
 

@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { fadeIn, staggerContainer } from "@/app/utils/animation"; // Adjust the import path as needed
+import { fadeIn, staggerContainer } from "@/app/utils/animation";
 import Tilt from "react-parallax-tilt";
+import Image from "next/image";
 
 interface ServiceCardProps {
   title: string;
@@ -74,6 +75,7 @@ export function Services() {
 
   return (
     <motion.section
+      id="services"
       ref={ref}
       className="container mx-auto pb-10 mb-10"
       variants={staggerContainer(0.2, 0.1)}
@@ -81,7 +83,7 @@ export function Services() {
       animate={controls}
     >
       <motion.h2
-        className="px-8 font-mono text-[#D0B870] mb-4"
+        className="px-8 font-mono text-2-xl text-[#D0B870] mb-4"
         variants={fadeIn("up", "tween", 0, 1)}
       >
         Services
@@ -90,27 +92,27 @@ export function Services() {
         className="px-8 text-gray-400 max-w-xl mb-16"
         variants={fadeIn("up", "tween", 0.2, 1)}
       >
-        Hi there! I'm Robert, a passionate junior web developer on a journey to turn my coding dreams into reality.
+        From enhancing your brand&apos;s online presence to developing custom solutions, my goal is to deliver high-quality results tailored to your vision. Explore the services I offer and see how I can contribute to your project&apos;s success.
       </motion.p>
-      <div className=" container mx-auto flex flex-wrap justify-center gap-8 mb-10">
+      <div className="container mx-auto flex flex-wrap justify-center gap-8 mb-10">
         {isMounted && (
           <>
             <ServiceCard
               title="UI/UX Design"
               description="Designing user-friendly interfaces."
-              icon={<img src="/assets/graphic.png" alt="UI/UX Design" className="w-14 h-14" />}
-              index={0} // index to control the delay
+              icon={<Image src="/assets/graphic.png" alt="UI/UX Design" width={56} height={56} />}
+              index={0}
             />
             <ServiceCard
               title="Web Development"
               description="Building responsive and modern websites."
-              icon={<img src="/assets/develop.png" alt="Web Development" className="w-14 h-14" />}
+              icon={<Image src="/assets/develop.png" alt="Web Development" width={56} height={56} />}
               index={1}
             />
             <ServiceCard
               title="Digital Marketing"
               description="Creating and launching Social media/google marketing campaigns."
-              icon={<img src="/assets/digital.png" alt="Digital Marketing" className="w-14 h-14" />}
+              icon={<Image src="/assets/digital.png" alt="Digital Marketing" width={56} height={56} />}
               index={2}
             />
           </>

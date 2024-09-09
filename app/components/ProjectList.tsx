@@ -18,7 +18,6 @@ export function ProjectsList({ filterTech }: { filterTech: string }) {
     }
   }, [filterTech]);
 
-
   const techColor = colorMap[filterTech] || "text-gray-500";
 
   return (
@@ -41,7 +40,7 @@ export function ProjectsList({ filterTech }: { filterTech: string }) {
           <div className="container mx-auto my-12 col-span-full text-center ">
             <h2 className="text-2xl font-bold font-mono text-primary">Oops! 🚧</h2>
             <p className="mt-2 m-4 text-gray-400">
-              I haven’t had the opportunity to explore <strong className={techColor}>{filterTech}</strong> just yet, but it's definitely on my radar for future projects.
+              I haven&apos;t had the opportunity to explore <strong className={techColor}>{filterTech}</strong> just yet, but it&apos;s definitely on my radar for future projects.
             </p>
           </div>
         )}

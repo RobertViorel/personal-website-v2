@@ -19,8 +19,13 @@ import link from "./link.png";
 import graphic from "./graphic.png";
 import computer from "./computer.png";
 import vilalisjak from "./vilalisjak.png";
+import develop from "./develop.png";
+import phone from "./phone.png";
+
 
 export {
+  develop,
+  phone,
   vilalisjak,
   computer,
   graphic,

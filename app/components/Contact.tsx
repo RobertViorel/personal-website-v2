@@ -1,11 +1,10 @@
 "use client";
 
-
-import React, { useRef, useState, ChangeEvent, FormEvent } from "react";
+import React, { useRef, useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { slideIn, fadeIn } from "../utils/animation";
-import { EarthCanvas } from "./Earth";
+import { slideIn } from "../utils/animation";
+import { useRouter } from 'next/navigation';
 
 interface FormState {
   name: string;
@@ -22,6 +21,15 @@ export default function Contact() {
   });
 
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setForm({
+      name: "",
+      email: "",
+      message: "",
+    });
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -37,8 +45,8 @@ export default function Contact() {
 
     emailjs
       .send(
-        "service_ern3d6m",
-        "template_rq30pqc",
+        "service_stqjkzp",
+        "template_gz4rh78",
         {
           from_name: form.name,
           to_name: "Robert",
@@ -46,13 +54,12 @@ export default function Contact() {
           to_email: "robert@dumitrurobert.com",
           message: form.message,
         },
-        "xoH3a2sNsjC3kRs8e"
+        "CTps87lqXto1OQu0y"
       )
       .then(
         () => {
           setLoading(false);
           alert("Thank you. I will get back to you as soon as possible.");
-
           setForm({
             name: "",
             email: "",
@@ -62,23 +69,28 @@ export default function Contact() {
         (error) => {
           setLoading(false);
           console.error(error);
-
           alert("Ahh, something went wrong. Please try again.");
         }
       );
   };
 
   return (
-
     <div className="m-12 flex flex-col gap-10 overflow-hidden">
-        <div className="flex justify-center bg-no-repeat my-12">
-            <EarthCanvas />
-        </div>
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className="flex-[0.75] bg-[#039cad45] p-8 rounded-2xl"
+        className="flex-[0.75] bg-[#039cad45] p-8 rounded-2xl relative"
       >
         <h3 className="text-2xl text-primary font-semibold">Contact</h3>
+
+
+        <button
+          type="button"
+          className="bg-primary py-2 px-6 rounded-xl outline-none text-primary font-semibold shadow-lg shadow-primary absolute top-2 right-2"
+          onClick={() => router.push('/calculator')}
+        >
+          Website Cost Estimator
+        </button>
+
 
         <form
           ref={formRef}
@@ -93,7 +105,7 @@ export default function Contact() {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
-              className=" py-4 bg-[#039cad45] px-6 placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
+              className="py-4 bg-[#039cad45] px-6 placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
               required
             />
           </label>

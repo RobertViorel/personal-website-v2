@@ -20,6 +20,7 @@ export function FilterProjects({
     "Next.js",
     "Node.js",
     "Java",
+    "MySQL",
   ];
   const [selectedTech, setSelectedTech] = useState<string>("All");
 
@@ -30,7 +31,7 @@ export function FilterProjects({
   };
 
   return (
-    <div className="m-4 flex flex-col gap-4">
+    <div className="mx-4 flex flex-col gap-4">
       <label htmlFor="tech-filter" className="text-lg text-primary font-mono font-semibold">
         Filter by Technology:
       </label>

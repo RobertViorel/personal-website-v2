@@ -11,4 +11,5 @@ export const colorMap: { [key: string]: string } = {
   "Next.js": "text-cyan-500",
   "Node.js": "text-green-700",
   Java: "text-red-600",
+  MySQL: "text-orange-300",
 };

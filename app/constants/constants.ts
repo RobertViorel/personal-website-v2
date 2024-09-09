@@ -19,28 +19,32 @@ import {
   boxa,
   graphic,
   vilalisjak,
+  develop,
+  phone,
 } from "@/public/assets";
 
 export const navLinks = [
   {
     name: "About",
     dropdown: [
-      { name: "Experience", path: "/about/experience" },
-      { name: "Tech", path: "/about/tech" },
-      { name: "CV", path: "/cv" },
-    ],
+          { name: "Services", path: "/#services" },
+          { name: "Process", path: "/#process" },
+          { name: "Tech", path: "/#tech" },
+      ],
   },
   {
     name: "Projects",
     path: "/projects",
   },
+  // {
+  //   name: "Resources",
+  //   dropdown: [
+  //     { name: "Components", path: "/components" },
+  //   ],
+  // },
   {
-    name: "Resources",
-    dropdown: [
-      { name: "Components", path: "/components" },
-      { name: "API Reference", path: "/resources/api" },
-      { name: "Community", path: "/contact" },
-    ],
+    name: "CV",
+    path: "/cv",
   },
   {
     name: "Contact",
@@ -66,81 +70,53 @@ export const TECHNOLOGIES = [
 
 export const steps = [
   {
-    title: "Free Strategy Advice",
-    description:
-      "I provide a personal initial consultation via phone, Zoom or Skype, during which we assess your project requirements and collaboratively develop initial concepts.",
-    icon: "/assets/develop.png",
-    date: "2025",
+    title: "Strategy Advice",
+    description: "I provide an initial consultation where we assess your project requirements and collaboratively develop initial concepts.",
+    icon: phone,
+    date: "Step 1",
   },
   {
     title: "Your Personalized Cost Estimate",
-    description:
-      "Within 3 working days, you’ll receive an individual cost estimate tailored to your project’s specific requirements. My offers are modular, providing you the flexibility to adjust the project’s scope according to your needs.",
-    icon: "/assets/develop.png",
-    date: "2024",
+    description: "Shortly after, you'll receive a personalized cost estimate tailored to your project's specific requirements. My offers are modular, giving you the flexibility to adjust the scope as needed.",
+    icon: graphic,
+    date: "Step 2",
   },
   {
     title: "Realizing Your Online Presence",
-    description:
-      "Once the website design is finalized, I begin the development phase. I meticulously code your responsive website or online shop to meet your specific needs. Throughout the process, I perform quality assurance checks to ensure your online presence exceeds performance standards and your expectations.",
-    icon: "/assets/develop.png",
-    date: "2023",
+    description: "Once the details are agreed upon, I begin the development phase. I meticulously code your responsive website or online shop to meet your specific needs. Throughout the process, I perform quality assurance checks to ensure your online presence exceeds performance standards and your expectations.",
+    icon: develop,
+    date: "Step 3",
   },
   {
     title: "Deploying Your Website",
-    description:
-      "Upon the completion of the project, we will conduct a comprehensive review of the results and provide you with detailed instructions on how to maintain and manage your website.",
-    icon: "/assets/develop.png",
-    date: "2022",
+    description: "Upon project completion, we will conduct a comprehensive review of the results together, implementing any final changes as needed. The success of your website unfolds with the seamless transfer from my development server to your live server. Rest assured, I remain fully committed to supporting you throughout the entire process.",
+    icon: done,
+    date: "Step 4",
   },
+
 ];
 
 export const projects = [
   {
     index: 0,
-    name: "Boxa Travel",
+    name: "Vila Lisjak",
     description:
-      "Boxatravel is a Web 3.0-based travel booking engine that supports crypto payments. This app was built by a full team of developers. It was a startup I founded a few years ago that unfortunately didn't have the chance to take off. My involvement was solely in the front-end development. Currently, the code is publicly available on GitHub and may be used for personal purposes ONLY.",
-    technologies: ["React", "TypeScript"],
-    image: boxa, // Use imported image here
-    source_code_link: "https://github.com/example/project",
-    linkIcon: github, // Optionally use another imported image
-    tags: [
-      { name: "PHP" },
-      { name: "TypeScript" },
-      { name: "JavaScript" },
-      { name: "Bootstrap" },
-      { name: "TailwindCSS" },
-      { name: "Node.js" },
-      { name: "Next.js" },
-    ],
+      "Vila Lisjak is a beautifully designed building featuring seven luxurious apartments available for short-term rentals. I developed the website for Vila Lisjak using HTML, CSS, JavaScript, and Bootstrap, ensuring a seamless and user-friendly experience for visitors.",
+    technologies: ["HTML", "JavaScript", "Bootstrap"],
+    image: vilalisjak,
+    source_code_link: "https://vilalisjak.com",
+    linkIcon: link,
+    tags: [{ name: "HTML" }, { name: "JavaScript" }, { name: "Bootstrap" }],
   },
   {
     index: 1,
-    name: "Vila Lisjak",
+    name: "Boxa Travel",
     description:
-      "Vila Lisjak is a beautifully designed building featuring seven luxurious apartments available for short-term rentals. I developed the website for Vila Lisjak using HTML, CSS, JavaScript, and Bootstrap, ensuring a seamless and user-friendly experience for ",
-    technologies: ["HTML", "TypeScript"],
-    image: vilalisjak, // Example for external path
-    source_code_link: "https://github.com/example/project",
-    linkIcon: link, // Optionally use another imported image
-    tags: [
-      { name: "HTML", color: "text-blue-500" },
-      { name: "TypeScript", color: "text-green-500" },
-    ],
-  },
-  {
-    index: 2,
-    name: "Vila Lisjak",
-    description:
-      "Vila Lisjak is a beautifully designed building featuring seven luxurious apartments available for short-term rentals. I developed the website for Vila Lisjak using HTML, CSS, JavaScript, and Bootstrap, ensuring a seamless and user-friendly experience for ",
-    technologies: ["HTML", "TypeScript"],
-    image: vilalisjak, // Example for external path
-    source_code_link: "https://github.com/example/project",
-    linkIcon: link, // Optionally use another imported image
-    tags: [
-      { name: "HTML", color: "text-blue-500" },
-      { name: "TypeScript", color: "text-green-500" },
-    ],
+      "Boxatravel is a Web 3.0-based travel booking engine that supports crypto payments. It was a startup I founded a few years ago that unfortunately didn't have the chance to take off. Currently, the code is publicly available on GitHub and may be used for personal purposes ONLY.",
+    technologies: ["PHP", "MySQL", "TailwindCSS"],
+    image: boxa,
+    source_code_link: "https://github.com/RobertViorel/Boxa-Travel",
+    linkIcon: github,
+    tags: [{ name: "PHP" }, { name: "MySQL" }, { name: "TailwindCSS" }],
   },
 ];

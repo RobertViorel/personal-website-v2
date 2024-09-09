@@ -1,5 +1,5 @@
 
-import Experience from "./components/Experience";
+import { Experience } from "./components/Experience";
 import { Hero } from "./components/Hero";
 import { Services } from "./components/Services";
 import { StarsCanvas } from "./components/StarsCanvas";

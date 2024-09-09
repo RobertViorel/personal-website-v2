@@ -1,6 +1,3 @@
-// to do: left animated line as on github
-
-
 "use client";
 
 import React, { useEffect } from "react";
@@ -10,8 +7,8 @@ import { textVariant, fadeIn, zoomIn } from "@/app/utils/animation";
 
 export function Hero() {
   const { ref, inView } = useInView({
-    threshold: 0.2, // Adjust as needed
-    triggerOnce: false // Allow re-triggering on scroll
+    threshold: 0.2,
+    triggerOnce: false
   });
 
   const controls = useAnimation();
@@ -51,7 +48,7 @@ export function Hero() {
         className="text-gray-400 max-w-xl mt-4"
         variants={fadeIn("up", "tween", 0.4, 1)}
       >
-        Hi there! I'm Robert, a passionate junior web developer on a journey to
+        Hi there! I&apos;m Robert, a passionate junior web developer on a journey to
         turn my coding dreams into reality. With a keen eye for design and a
         love for solving problems, I am currently delving deep into the world of
         web development, continuously expanding my skill set and exploring the

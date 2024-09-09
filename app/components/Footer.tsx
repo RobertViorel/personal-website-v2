@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaTelegram } from "react-icons/fa";
 import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer"; // Import the hook
+import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 
 const fadeIn = (direction: string, type: string, delay: number, duration: number) => ({
   hidden: { opacity: 0, y: direction === "up" ? 20 : -20 },
@@ -16,7 +17,7 @@ const fadeIn = (direction: string, type: string, delay: number, duration: number
 });
 
 export function Footer() {
-  const { ref, inView } = useInView({ threshold: 0.1 }); // Initialize useInView
+  const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
   const [isMounted, setIsMounted] = useState(false);
 
@@ -37,7 +38,6 @@ export function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <section className="flex flex-col lg:flex-row items-center justify-between py-6 space-y-6 lg:space-y-0">
 
-
           <motion.div
             ref={ref}
             className="flex justify-center lg:justify-start w-full lg:w-1/3 mb-1 lg:mb-0"
@@ -46,14 +46,15 @@ export function Footer() {
             variants={fadeIn("up", "tween", 0, 1)}
           >
             <Link href="/">
-              <img
+              <Image
                 src="/assets/Logo.svg"
                 alt="logo"
+                width={64}
+                height={64}
                 className="h-16 md:h-18 w-auto"
               />
             </Link>
           </motion.div>
-
 
           <motion.div
             ref={ref}

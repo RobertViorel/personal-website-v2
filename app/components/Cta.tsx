@@ -5,6 +5,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { fadeIn, staggerContainer, zoomIn } from "@/app/utils/animation";
 import Tilt from "react-parallax-tilt";
+import Image from "next/image";
 
 interface ServiceCardProps {
   title: string;
@@ -21,12 +22,14 @@ const ServiceCard = ({
   index,
   buttons,
 }: ServiceCardProps) => {
-  const { ref, inView } = useInView({ threshold: 0.1 });
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: false });
   const controls = useAnimation();
 
   useEffect(() => {
     if (inView) {
       controls.start("show");
+    } else {
+      controls.start("hidden");
     }
   }, [inView, controls]);
 
@@ -106,16 +109,18 @@ export function Cta() {
           title="I Can Help!"
           description="Let me build you a stunning website."
           icon={
-            <img
+            <Image
               src="/assets/develop.png"
               alt="Need a Website?"
+              width={56} // Adjust width as needed
+              height={56} // Adjust height as needed
               className="w-14 h-14"
             />
           }
           index={0}
           buttons={[
             { text: "Contact", href: "/contact" },
-            { text: "Get a Quote", href: "/services" },
+            // { text: "Get a Quote", href: "/calculator" },
           ]}
         />
       </div>
