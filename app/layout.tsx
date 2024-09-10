@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import MouseMovement from "./components/MouseMovement";
 import { CookieConsent } from "./components/CookieConsent";
 import { Footer } from "./components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,8 +28,8 @@ export const metadata = {
     ],
   },
   openGraph: {
-    title: "Robert Dumitru - Web Development Services",
-    description: "Professional web development services including custom design, responsive layouts, and SEO. Elevate your online presence with Robert Dumitru.",
+    title: "Robert Dumitru - Web Developer",
+    description: "Professional web development services including custom design, responsive layouts, and SEO.",
     url: "https://www.dumitrurobert.com",
     siteName: "Robert Dumitru",
     images: [
@@ -55,6 +56,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieConsent />
+        <SpeedInsights />
       </body>
     </html>
   );
