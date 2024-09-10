@@ -36,7 +36,7 @@ export const metadata = {
         url: "/assets/opengraph.png",
         width: 1200,
         height: 630,
-        alt: "Web Development Services by Robert Dumitru",
+        alt: "",
       },
     ],
   },

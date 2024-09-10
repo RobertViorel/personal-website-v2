@@ -75,16 +75,16 @@ export default function Contact() {
   };
 
   return (
-    <div className="m-12 flex flex-col gap-10 overflow-hidden">
+    <div className="m-4 sm:m-12 flex flex-col gap-8 sm:gap-10 overflow-hidden">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className="flex-[0.75] bg-[#039cad45] p-8 rounded-2xl relative"
+        className="relative bg-[#039cad45] p-6 sm:p-8 rounded-2xl"
       >
-        <h3 className="text-2xl text-primary font-semibold">Contact</h3>
+        <h3 className="text-xl sm:text-2xl text-primary font-semibold">Contact</h3>
 
         <button
           type="button"
-          className="bg-primary py-2 px-6 rounded-xl outline-none text-primary font-semibold shadow-lg shadow-primary absolute top-2 right-2"
+          className="absolute top-2 right-2 bg-primary py-2 px-4 sm:py-2 sm:px-6 rounded-xl outline-none text-primary font-semibold shadow-lg shadow-primary"
           onClick={() => router.push('/calculator')}
         >
           Website Cost Estimator
@@ -93,48 +93,48 @@ export default function Contact() {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="mt-12 flex flex-col gap-8"
+          className="mt-8 sm:mt-12 flex flex-col gap-6 sm:gap-8"
         >
           <label className="flex flex-col">
-            <span className="text-primary font-medium mb-4">Your Name *</span>
+            <span className="text-primary font-medium mb-2 sm:mb-4">Your Name *</span>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="py-4 bg-[#039cad45] px-6 placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
+              className="py-3 px-4 sm:py-4 sm:px-6 bg-[#039cad45] placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
               required
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-primary font-medium mb-4">Your Email *</span>
+            <span className="text-primary font-medium mb-2 sm:mb-4">Your Email *</span>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              className="bg-[#039cad45] py-4 px-6 placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
+              className="py-3 px-4 sm:py-4 sm:px-6 bg-[#039cad45] placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
               required
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-primary font-medium mb-4">Your Message *</span>
+            <span className="text-primary font-medium mb-2 sm:mb-4">Your Message *</span>
             <textarea
-              rows={5}
+              rows={4}
               name="message"
               value={form.message}
               onChange={handleChange}
               placeholder="Enter your message"
-              className="bg-[#039cad45] py-4 px-6 placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
+              className="py-3 px-4 sm:py-4 sm:px-6 bg-[#039cad45] placeholder:text-secondary text-primary rounded-lg outline-none border-none font-medium"
               required
             />
           </label>
 
           <button
             type="submit"
-            className="bg-primary py-3 px-8 rounded-xl outline-none w-fit text-primary font-bold shadow-lg shadow-primary"
+            className="bg-primary py-2 px-6 sm:py-3 sm:px-8 rounded-xl outline-none w-fit text-primary font-bold shadow-lg shadow-primary"
           >
             {loading ? "Sending..." : "Send"}
           </button>
