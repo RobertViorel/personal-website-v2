@@ -21,9 +21,12 @@ import computer from "./computer.png";
 import vilalisjak from "./vilalisjak.png";
 import develop from "./develop.png";
 import phone from "./phone.png";
+import logo from "./Logo.svg";
+
 
 
 export {
+  logo,
   develop,
   phone,
   vilalisjak,

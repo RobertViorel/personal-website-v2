@@ -7,6 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa6";
 import Link from "next/link";
 import { navLinks } from "../constants/constants";
+import { logo } from "@/public/assets";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -55,7 +56,7 @@ export function Navbar() {
       <div className="flex items-center">
       <Link href="/">
       <Image
-        src="/assets/Logo.svg"
+        src={logo}
         alt="Logo"
         width={64}
         height={64}

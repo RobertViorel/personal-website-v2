@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+import { logo } from "@/public/assets";
 
 const fadeIn = (direction: string, type: string, delay: number, duration: number) => ({
   hidden: { opacity: 0, y: direction === "up" ? 20 : -20 },
@@ -47,7 +48,7 @@ export function Footer() {
           >
             <Link href="/">
               <Image
-                src="/assets/Logo.svg"
+                src={logo}
                 alt="logo"
                 width={64}
                 height={64}
