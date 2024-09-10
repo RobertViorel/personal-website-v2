@@ -32,6 +32,7 @@ const Ball = React.memo(({ imgUrl }: { imgUrl: string }) => {
     </Float>
   );
 });
+Ball.displayName = 'Ball';
 
 const BallCanvas = React.memo(({ icon }: { icon: string }) => (
   <div className="w-24 h-24 max-w-full max-h-full overflow-hidden">
@@ -44,6 +45,8 @@ const BallCanvas = React.memo(({ icon }: { icon: string }) => (
     </Canvas>
   </div>
 ));
+
+BallCanvas.displayName = 'BallCanvas';
 
 export function Tech() {
   const { ref, inView } = useInView({ threshold: 0.1 });

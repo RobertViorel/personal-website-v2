@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Suisse Intel', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['Suisse Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
         mono: ['SF Mono', 'Fira Code', 'Roboto Mono', 'Menlo', 'monospace'],
       },
     },
