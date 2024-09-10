@@ -86,8 +86,8 @@ export function ProjectCard({
             <Image
               src={getLinkIcon()}
               alt="source code"
-              width={20}
-              height={20}
+              width={25}
+              height={25}
               className="object-contain"
             />
           </div>

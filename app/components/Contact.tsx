@@ -75,7 +75,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="m-4 sm:m-12 flex flex-col gap-8 sm:gap-10 overflow-hidden">
+    <div className="mt-12 sm:m-12 flex flex-col gap-8 sm:gap-10 overflow-hidden">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className="relative bg-[#039cad45] p-6 sm:p-8 rounded-2xl"
