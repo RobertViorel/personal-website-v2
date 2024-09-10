@@ -87,7 +87,7 @@ export default function Contact() {
           className="absolute top-2 right-2 bg-primary py-2 px-4 sm:py-2 sm:px-6 rounded-xl outline-none text-primary font-semibold shadow-lg shadow-primary"
           onClick={() => router.push('/calculator')}
         >
-          Website Cost Estimator
+          Cost Estimator
         </button>
 
         <form
