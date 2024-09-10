@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { Inter } from "next/font/google";
 import { Navbar } from "./components/Navbar";
 import MouseMovement from "./components/MouseMovement";
 import { CookieConsent } from "./components/CookieConsent";
@@ -8,7 +7,7 @@ import { Footer } from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Robert Dumitru - Web Developer",
   description: "Professional web development services including custom website design, responsive layouts, and SEO optimization. Transform your online presence with a tailored solution that fits your needs.",
   icons: {
@@ -45,9 +44,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={`bg-primary ${inter.className} flex flex-col min-h-screen`}>

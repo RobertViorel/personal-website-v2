@@ -82,7 +82,6 @@ export default function Contact() {
       >
         <h3 className="text-2xl text-primary font-semibold">Contact</h3>
 
-
         <button
           type="button"
           className="bg-primary py-2 px-6 rounded-xl outline-none text-primary font-semibold shadow-lg shadow-primary absolute top-2 right-2"
@@ -90,7 +89,6 @@ export default function Contact() {
         >
           Website Cost Estimator
         </button>
-
 
         <form
           ref={formRef}

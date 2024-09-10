@@ -1,5 +1,4 @@
 "use client";
-
 import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
@@ -8,7 +7,7 @@ import { useInView } from 'react-intersection-observer';
 import { TECHNOLOGIES } from '../constants/constants';
 import { CanvasLoader } from './CanvasLoader';
 
-export function Ball({ imgUrl }: { imgUrl: string }) {
+const Ball = React.memo(({ imgUrl }: { imgUrl: string }) => {
   const [decal] = useTexture([imgUrl]);
 
   return (
@@ -32,21 +31,19 @@ export function Ball({ imgUrl }: { imgUrl: string }) {
       </mesh>
     </Float>
   );
-}
+});
 
-export function BallCanvas({ icon }: { icon: string }) {
-  return (
-    <div className="w-full h-full max-w-full max-h-full overflow-hidden">
-      <Canvas frameloop='demand' dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls enableZoom={false} />
-          <Ball imgUrl={icon} />
-        </Suspense>
-        <Preload all />
-      </Canvas>
-    </div>
-  );
-}
+const BallCanvas = React.memo(({ icon }: { icon: string }) => (
+  <div className="w-24 h-24 max-w-full max-h-full overflow-hidden">
+    <Canvas frameloop='demand' dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
+      <Suspense fallback={<CanvasLoader />}>
+        <OrbitControls enableZoom={false} />
+        <Ball imgUrl={icon} />
+      </Suspense>
+      <Preload all />
+    </Canvas>
+  </div>
+));
 
 export function Tech() {
   const { ref, inView } = useInView({ threshold: 0.1 });
@@ -100,15 +97,11 @@ export function Tech() {
         Here are some of the technologies I&apos;m currently exploring and using in my projects. These tools help me create innovative and effective solutions, enhancing both the development process and the final results.
       </motion.p>
       <div className="flex flex-row flex-wrap justify-center gap-10">
-        {isMounted && (
-          <>
-            {TECHNOLOGIES.map((technology, index) => (
-              <div className="w-24 h-24 max-w-full max-h-full" key={technology.name}>
-                <BallCanvas icon={technology.icon} />
-              </div>
-            ))}
-          </>
-        )}
+        {isMounted && TECHNOLOGIES.map((technology) => (
+          <div className="w-24 h-24" key={technology.name}>
+            <BallCanvas icon={technology.icon} />
+          </div>
+        ))}
       </div>
     </motion.section>
   );

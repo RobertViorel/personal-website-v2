@@ -1,0 +1,15 @@
+{
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-scss",
+      "stylelint-config-tailwindcss"
+    ],
+    "rules": {
+      "color-no-invalid-hex": true,
+      "declaration-colon-space-after": "always",
+      "declaration-colon-space-before": "never",
+      "indentation": 2,
+      "max-empty-lines": 1,
+      "no-missing-end-of-source-newline": true
+    }
+  }
