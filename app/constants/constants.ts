@@ -102,7 +102,7 @@ export const projects = [
     name: "Vila Lisjak",
     description:
       "Vila Lisjak is a beautifully designed building featuring seven luxurious apartments available for short-term rentals. I developed the website for Vila Lisjak using HTML, CSS, JavaScript, and Bootstrap, ensuring a seamless and user-friendly experience for visitors.",
-    technologies: ["HTML", "JavaScript", "Bootstrap"],
+    technologies: ["HTML", "JavaScript", "Bootstrap", "CSS"],
     image: vilalisjak,
     source_code_link: "https://vilalisjak.com",
     linkIcon: link,
@@ -113,7 +113,7 @@ export const projects = [
     name: "Boxa Travel",
     description:
       "Boxatravel is a Web 3.0-based travel booking engine that supports crypto payments. It was a startup I founded a few years ago that unfortunately didn't have the chance to take off. Currently, the code is publicly available on GitHub and may be used for personal purposes ONLY.",
-    technologies: ["PHP", "MySQL", "TailwindCSS"],
+    technologies: ["PHP", "MySQL", "TailwindCSS", "CSS"],
     image: boxa,
     source_code_link: "https://github.com/RobertViorel/Boxa-Travel",
     linkIcon: github,

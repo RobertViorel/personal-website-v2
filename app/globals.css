@@ -17,8 +17,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+html, body {
+  height: 100%;
   overflow-x: hidden;
+  background-color: var(--bg-primary);
 }
 
 .container {

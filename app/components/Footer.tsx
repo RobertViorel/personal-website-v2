@@ -6,7 +6,6 @@ import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import Logo from '/assets/logo.svg';
 
 const fadeIn = (direction: string, type: string, delay: number, duration: number) => ({
   hidden: { opacity: 0, y: direction === "up" ? 20 : -20 },

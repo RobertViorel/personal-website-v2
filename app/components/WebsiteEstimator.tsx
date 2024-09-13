@@ -79,7 +79,7 @@ export function WebsiteEstimator() {
   };
 
   return (
-    <div className="mt-12 flex flex-col gap-10">
+    <div className="my-12 flex flex-col gap-10">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className="bg-[#039cad45] p-8 rounded-2xl shadow-lg"

@@ -11,16 +11,16 @@ export function FilterProjects({
     "All",
     "HTML",
     "CSS",
+    "JavaScript",
     "Bootstrap",
     "TailwindCSS",
-    "JavaScript",
-    "PHP",
     "TypeScript",
     "React",
     "Next.js",
     "Node.js",
-    "Java",
+    "PHP",
     "MySQL",
+    "Java",
   ];
   const [selectedTech, setSelectedTech] = useState<string>("All");
 
