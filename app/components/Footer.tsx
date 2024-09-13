@@ -73,7 +73,7 @@ export function Footer() {
                 <FaGithub size={30} />
               </a>
               <a
-                href="https://www.linkedin.com/in/robert-dumitru-b791b72b4/"
+                href="https://www.linkedin.com/in/robert-dumitru-a78747244/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#d0b870]"

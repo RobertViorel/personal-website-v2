@@ -11,7 +11,7 @@ export function Cv() {
           The PDFs are password protected. To get the password, please message me on{" "}
           <span className="text-[#D0B870] hover:text-[#c7a956]">
             <a
-              href="https://www.linkedin.com/in/robert-dumitru-b791b72b4/"
+              href="https://www.linkedin.com/in/robert-dumitru-a78747244/"
               target="_blank"
               rel="noopener noreferrer"
             >
