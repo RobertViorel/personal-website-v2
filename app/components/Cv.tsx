@@ -21,14 +21,14 @@ export function Cv() {
         </p>
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 w-full justify-center">
           <a
-            href="/assets/Resume:EN:IT.pdf"
+            href="/assets/Resume-IT.pdf"
             download
             className="w-full md:w-auto px-8 py-4 border border-[#D0B870] text-[#D0B870] hover:bg-[#D0B870] hover:text-white transition-colors duration-300 rounded-md text-center"
           >
             Download EN
           </a>
           <a
-            href="/assets/Lebenslauf:DE:IT.pdf"
+            href="/assets/Lebenslauf-IT-DE.pdf"
             download
             className="w-full md:w-auto px-8 py-4 border border-[#D0B870] text-[#D0B870] hover:bg-[#D0B870] hover:text-white transition-colors duration-300 rounded-md text-center"
           >
