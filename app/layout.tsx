@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+  metadataBase: new URL('https://www.dumitrurobert.com'),
   title: "Robert Dumitru - Web Developer",
   description: "Professional web development services including custom website design, responsive layouts, and SEO optimization. Transform your online presence with a tailored solution that fits your needs.",
   icons: {
