@@ -21,6 +21,7 @@ import {
   vilalisjak,
   develop,
   phone,
+  varcendom,
 } from "@/public/assets";
 
 export const navLinks = [
@@ -99,6 +100,17 @@ export const steps = [
 export const projects = [
   {
     index: 0,
+    name: "Varcendom",
+    description:
+      "A simple landing page built with Next.js that showcases a range of heat pumps and air conditioners for sale.",
+    technologies: ["NextJs", "TypeScript", "TailwindCSS"],
+    image: varcendom,
+    source_code_link: "https://www.varcendom.si",
+    linkIcon: link,
+    tags: [{ name: "Next.js" }, { name: "TypeScript" }, { name: "TailwindCSS" }],
+  },
+  {
+    index: 1,
     name: "Vila Lisjak",
     description:
       "Vila Lisjak is a beautifully designed building featuring seven luxurious apartments available for short-term rentals. I developed the website for Vila Lisjak using HTML, CSS, JavaScript, and Bootstrap, ensuring a seamless and user-friendly experience for visitors.",
@@ -109,7 +121,7 @@ export const projects = [
     tags: [{ name: "HTML" }, { name: "JavaScript" }, { name: "Bootstrap" }],
   },
   {
-    index: 1,
+    index: 2,
     name: "Boxa Travel",
     description:
       "Boxatravel is a Web 3.0-based travel booking engine that supports crypto payments. It was a startup I founded a few years ago that unfortunately didn't have the chance to take off. Currently, the code is publicly available on GitHub and may be used for personal purposes ONLY.",
