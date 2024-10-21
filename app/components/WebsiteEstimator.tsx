@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useRef, useState, ChangeEvent } from "react";
-import { motion } from "framer-motion";
-import { slideIn } from "../utils/animation";
+
+
 
 interface FormData {
   pages: number;
@@ -80,8 +80,7 @@ export function WebsiteEstimator() {
 
   return (
     <div className="my-12 flex flex-col gap-10">
-      <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
+      <div
         className="bg-[#039cad45] p-8 rounded-2xl shadow-lg"
       >
         <h3 className="text-2xl text-primary font-semibold mb-6">
@@ -214,7 +213,7 @@ export function WebsiteEstimator() {
             <p className="text-xl font-bold">€{estimate}</p>
           </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
