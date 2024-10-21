@@ -1,40 +1,18 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic"; // For dynamic imports
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import { textVariant, fadeIn, zoomIn } from "@/app/utils/animation";
 
-
-export function Hero () {
-
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-    triggerOnce: false,
-    delay: 500,
-  });
-
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      const timeout = setTimeout(() => controls.start("show"), 300); // Debounce animation trigger
-      return () => clearTimeout(timeout);
-    } else {
-      controls.start("hidden");
-    }
-  }, [inView, controls]);
-
+export function Hero() {
   return (
     <motion.section
-      ref={ref}
       className="container mx-auto flex flex-col justify-center items-start h-screen px-4 md:px-8"
-      variants={fadeIn("up", "spring", 0.2, 1)}
       initial="hidden"
-      animate={controls}
+      animate="show"
+      variants={fadeIn("up", "spring", 0.2, 1)}
     >
-
       <motion.p
         className="text-[#D0B870] font-mono text-lg sm:text-xl"
         variants={textVariant(0.1)}
@@ -72,7 +50,7 @@ export function Hero () {
       </motion.a>
     </motion.section>
   );
-};
+}
 
 export default dynamic(() => Promise.resolve(Hero), {
   ssr: false,
