@@ -9,9 +9,9 @@ import { Cta } from "./components/Cta";
 
 export default function Home() {
   return (
-    <div className="relative w-full min-h-screen overflow-auto">
+    <div className="relative w-full min-h-screen overflow-hidden">
       <StarsCanvas />
-      <div className="relative container mx-auto z-10">
+      <div className="relative z-10 overflow-hidden">
         <Hero />
         <Services />
         <Experience />
