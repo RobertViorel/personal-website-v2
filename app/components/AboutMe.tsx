@@ -1,31 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { fadeIn, staggerContainer } from "@/app/utils/animation";
 import { HoloBall } from "./HoloBall";
+import { fadeIn, staggerContainer } from "@/app/utils/animation";
+
+
 
 export function AboutMe() {
-  const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
-  const [isMounted, setIsMounted] = useState(false);
 
+  // Trigger animation on component mount
   useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    } else {
-      controls.start("hidden");
-    }
-  }, [inView, controls]);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    controls.start("show");
+  }, [controls]);
 
   return (
     <motion.section
-      ref={ref}
       className="container mx-auto pb-10 my-10 px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-center"
       initial="hidden"
       animate={controls}
@@ -33,14 +24,12 @@ export function AboutMe() {
     >
       <motion.div
         className="flex flex-col items-center lg:items-start lg:w-1/2 p-6 lg:pr-12"
-        variants={staggerContainer(0.3)}
       >
         <motion.p
           className="font-mono italic text-[#D0B870] my-4"
           variants={fadeIn("up", "spring", 0.3, 0.8)}
         >
-          &quot;The web does not just connect machines, it connects
-          people.&quot;
+          &quot;The web does not just connect machines, it connects people.&quot;
           <span className="block text-right mt-2">- Tim Berners-Lee</span>
         </motion.p>
       </motion.div>

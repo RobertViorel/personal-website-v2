@@ -1,20 +1,6 @@
 import {
   done,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  redux,
-  tailwind,
-  nodejs,
-  mongodb,
-  git,
-  figma,
-  docker,
-  threejs,
   github,
-  tick,
   link,
   boxa,
   graphic,
@@ -37,12 +23,7 @@ export const navLinks = [
     name: "Projects",
     path: "/projects",
   },
-  // {
-  //   name: "Resources",
-  //   dropdown: [
-  //     { name: "Components", path: "/components" },
-  //   ],
-  // },
+
   {
     name: "CV",
     path: "/cv",

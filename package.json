@@ -37,6 +37,7 @@
     "three": "^0.168.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^6.0.0",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",

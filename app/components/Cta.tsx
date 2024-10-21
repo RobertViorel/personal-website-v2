@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { fadeIn, staggerContainer, zoomIn } from "@/app/utils/animation";
+import { fadeIn, zoomIn } from "@/app/utils/animation";
 import Tilt from "react-parallax-tilt";
 import Image from "next/image";
 
@@ -22,16 +22,16 @@ const ServiceCard = ({
   index,
   buttons,
 }: ServiceCardProps) => {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: false });
+  const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !hasAnimated) {
       controls.start("show");
-    } else {
-      controls.start("hidden");
+      setHasAnimated(true);
     }
-  }, [inView, controls]);
+  }, [inView, controls, hasAnimated]);
 
   return (
     <Tilt
@@ -82,25 +82,24 @@ const ServiceCard = ({
 export function Cta() {
   const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !hasAnimated) {
       controls.start("show");
+      setHasAnimated(true);
     }
-  }, [inView, controls]);
+  }, [inView, controls, hasAnimated]);
 
   return (
     <motion.section
       ref={ref}
       className="container mx-auto pb-10 mb-10"
-      variants={staggerContainer(0.2, 0.1)}
+      variants={fadeIn("up", "tween", 0, 1)}
       initial="hidden"
       animate={controls}
     >
-      <motion.h2
-        className="px-8 text-2xl font-mono font-semibold text-center text-primary mb-4"
-        variants={fadeIn("up", "tween", 0, 1)}
-      >
+      <motion.h2 className="px-8 text-2xl font-mono font-semibold text-center text-primary mb-4">
         Need a Website?
       </motion.h2>
 
@@ -112,15 +111,14 @@ export function Cta() {
             <Image
               src="/assets/develop.png"
               alt="Need a Website?"
-              width={56} // Adjust width as needed
-              height={56} // Adjust height as needed
+              width={56}
+              height={56}
               className="w-14 h-14"
             />
           }
           index={0}
           buttons={[
             { text: "Contact", href: "/contact" },
-            // { text: "Get a Quote", href: "/calculator" },
           ]}
         />
       </div>

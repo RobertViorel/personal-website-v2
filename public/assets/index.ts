@@ -22,10 +22,13 @@ import vilalisjak from "./vilalisjak.png";
 import develop from "./develop.png";
 import phone from "./phone.png";
 import varcendom from "./varcendom.png";
+import digital from "./digital.png";
+
 
 
 
 export {
+  digital,
   varcendom,
   develop,
   phone,

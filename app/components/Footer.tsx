@@ -19,19 +19,14 @@ const fadeIn = (direction: string, type: string, delay: number, duration: number
 export function Footer() {
   const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
-  const [isMounted, setIsMounted] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (inView) {
+    if (inView && !hasAnimated) {
       controls.start("show");
-    } else {
-      controls.start("hidden");
+      setHasAnimated(true);
     }
-  }, [inView, controls]);
+  }, [inView, controls, hasAnimated]);
 
   return (
     <footer className="w-full bg-transparent">

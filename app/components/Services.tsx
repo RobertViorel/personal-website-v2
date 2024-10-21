@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { fadeIn, staggerContainer } from "@/app/utils/animation";
@@ -14,18 +14,17 @@ interface ServiceCardProps {
   index: number;
 }
 
-
-export function ServiceCard({ title, description, icon, index }: ServiceCardProps) {
+const ServiceCard = ({ title, description, icon, index }: ServiceCardProps) => {
   const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !hasAnimated) {
       controls.start("show");
-    } else {
-      controls.start("hidden");
+      setHasAnimated(true); // Set animation as triggered
     }
-  }, [inView, controls]);
+  }, [inView, controls, hasAnimated]);
 
   return (
     <Tilt
@@ -55,41 +54,22 @@ export function ServiceCard({ title, description, icon, index }: ServiceCardProp
       </motion.div>
     </Tilt>
   );
-}
-
+};
 
 export function Services() {
+  const [isMounted, setIsMounted] = useState(false);
   const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
 
   useEffect(() => {
     if (inView) {
       controls.start("show");
-    } else {
-      controls.start("hidden");
     }
   }, [inView, controls]);
 
-  const services = [
-    {
-      title: "UI/UX Design",
-      description: "Designing user-friendly interfaces.",
-      icon: <Image src="/assets/graphic.png" alt="UI/UX Design" width={56} height={56} loading="lazy" />,
-      index: 0,
-    },
-    {
-      title: "Web Development",
-      description: "Building responsive and modern websites.",
-      icon: <Image src="/assets/develop.png" alt="Web Development" width={56} height={56} loading="lazy" />,
-      index: 1,
-    },
-    {
-      title: "Digital Marketing",
-      description: "Creating and launching social media/google marketing campaigns.",
-      icon: <Image src="/assets/digital.png" alt="Digital Marketing" width={56} height={56} loading="lazy" />,
-      index: 2,
-    },
-  ];
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <motion.section
@@ -113,15 +93,28 @@ export function Services() {
         From enhancing your brand&apos;s online presence to developing custom solutions, my goal is to deliver high-quality results tailored to your vision. Explore the services I offer and see how I can contribute to your project&apos;s success.
       </motion.p>
       <div className="container mx-auto flex flex-wrap justify-center gap-8 mb-10">
-        {services.map((service, idx) => (
-          <ServiceCard
-            key={idx}
-            title={service.title}
-            description={service.description}
-            icon={service.icon}
-            index={service.index}
-          />
-        ))}
+        {isMounted && (
+          <>
+            <ServiceCard
+              title="UI/UX Design"
+              description="Designing user-friendly interfaces."
+              icon={<Image src="/assets/graphic.png" alt="UI/UX Design" width={56} height={56} />}
+              index={0}
+            />
+            <ServiceCard
+              title="Web Development"
+              description="Building responsive and modern websites."
+              icon={<Image src="/assets/develop.png" alt="Web Development" width={56} height={56} />}
+              index={1}
+            />
+            <ServiceCard
+              title="Digital Marketing"
+              description="Creating and launching Social media/google marketing campaigns."
+              icon={<Image src="/assets/digital.png" alt="Digital Marketing" width={56} height={56} />}
+              index={2}
+            />
+          </>
+        )}
       </div>
     </motion.section>
   );
