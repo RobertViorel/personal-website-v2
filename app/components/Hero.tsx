@@ -1,21 +1,26 @@
 "use client";
 
 import React, { useEffect } from "react";
+import dynamic from "next/dynamic"; // For dynamic imports
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { textVariant, fadeIn, zoomIn } from "@/app/utils/animation";
 
-export function Hero() {
+
+export function Hero () {
+
   const { ref, inView } = useInView({
     threshold: 0.2,
-    triggerOnce: false
+    triggerOnce: false,
+    delay: 500,
   });
 
   const controls = useAnimation();
 
   useEffect(() => {
     if (inView) {
-      controls.start("show");
+      const timeout = setTimeout(() => controls.start("show"), 300); // Debounce animation trigger
+      return () => clearTimeout(timeout);
     } else {
       controls.start("hidden");
     }
@@ -29,7 +34,11 @@ export function Hero() {
       initial="hidden"
       animate={controls}
     >
-      <motion.p className="text-[#D0B870] font-mono text-lg sm:text-xl" variants={textVariant(0.1)}>
+
+      <motion.p
+        className="text-[#D0B870] font-mono text-lg sm:text-xl"
+        variants={textVariant(0.1)}
+      >
         Hi, my name is
       </motion.p>
       <motion.h1
@@ -63,4 +72,8 @@ export function Hero() {
       </motion.a>
     </motion.section>
   );
-}
+};
+
+export default dynamic(() => Promise.resolve(Hero), {
+  ssr: false,
+});
