@@ -16,8 +16,6 @@ export function FilterProjects({
     "TailwindCSS",
     "TypeScript",
     "React",
-    "Next.js",
-    "Node.js",
     "PHP",
     "MySQL",
     "Java",

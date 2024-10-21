@@ -1,3 +1,4 @@
+
 import {
   done,
   github,
@@ -84,7 +85,7 @@ export const projects = [
     name: "Varcendom",
     description:
       "A simple landing page built with Next.js that showcases a range of heat pumps and air conditioners for sale.",
-    technologies: ["NextJs", "TypeScript", "TailwindCSS"],
+    technologies: ["NextJs", "TypeScript", "TailwindCSS", "React"],
     image: varcendom,
     source_code_link: "https://www.varcendom.si",
     linkIcon: link,
@@ -106,10 +107,10 @@ export const projects = [
     name: "Boxa Travel",
     description:
       "Boxatravel is a Web 3.0-based travel booking engine that supports crypto payments. It was a startup I founded a few years ago that unfortunately didn't have the chance to take off. Currently, the code is publicly available on GitHub and may be used for personal purposes ONLY.",
-    technologies: ["PHP", "MySQL", "TailwindCSS", "CSS"],
+    technologies: ["PHP", "MySQL", "Bootstrap"],
     image: boxa,
     source_code_link: "https://github.com/RobertViorel/Boxa-Travel",
     linkIcon: github,
-    tags: [{ name: "PHP" }, { name: "MySQL" }, { name: "TailwindCSS" }],
+    tags: [{ name: "PHP" }, { name: "MySQL" }, { name: "Bootstrap" }],
   },
 ];
