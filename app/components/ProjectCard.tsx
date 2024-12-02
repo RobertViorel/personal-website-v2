@@ -20,6 +20,7 @@ interface ProjectCardProps {
   image: string | StaticImageData;
   source_code_link: string;
   linkIcon?: string | StaticImageData;
+  projectType: "P" | "C"; // Make it required (remove optional type `?`)
 }
 
 export function ProjectCard({
@@ -30,10 +31,12 @@ export function ProjectCard({
   image,
   source_code_link,
   linkIcon = github,
+  projectType, // No default here, it'll always be required
 }: ProjectCardProps) {
   const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false); // State for tooltip visibility
 
   useEffect(() => {
     if (inView && !hasAnimated) {
@@ -49,13 +52,16 @@ export function ProjectCard({
     return linkIcon.src;
   };
 
+  const handleMouseEnter = () => setShowTooltip(true); // Show tooltip on hover
+  const handleMouseLeave = () => setShowTooltip(false); // Hide tooltip on hover
+
   return (
     <motion.div
       ref={ref}
       variants={fadeIn("up", "spring", index * 0.5, 0.75)}
       initial="hidden"
       animate={controls}
-      className="bg-transparent p-5 rounded-2xl shadow-lg sm:w-[360px] max-w-full my-12"
+      className="bg-transparent p-5 rounded-2xl shadow-lg sm:w-[360px] max-w-full my-12 relative"
     >
       <div className="relative w-full h-[230px]">
         {typeof image === "string" ? (
@@ -108,6 +114,23 @@ export function ProjectCard({
             #{tag.name}
           </p>
         ))}
+      </div>
+
+      {/* Project Type Indicator (P or C) */}
+      <div
+        className="absolute bottom-4 right-4 w-8 h-8 flex justify-center items-center rounded-full border-2 border-white cursor-pointer z-10"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <span className="text-white text-lg font-bold">
+          {projectType === "P" ? "P" : "C"}
+        </span>
+
+        {showTooltip && (
+          <div className="absolute bottom-12 right-0 bg-black text-white text-xs rounded-lg px-2 py-1 z-20">
+            {projectType === "P" ? "Personal Project" : "Client Project"}
+          </div>
+        )}
       </div>
     </motion.div>
   );

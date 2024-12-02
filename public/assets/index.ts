@@ -23,11 +23,14 @@ import develop from "./develop.png";
 import phone from "./phone.png";
 import varcendom from "./varcendom.png";
 import digital from "./digital.png";
+import generator from "./ai-generator.png";
+
 
 
 
 
 export {
+  generator,
   digital,
   varcendom,
   develop,

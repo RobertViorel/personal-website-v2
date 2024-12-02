@@ -1,4 +1,3 @@
-
 import {
   done,
   github,
@@ -9,16 +8,17 @@ import {
   develop,
   phone,
   varcendom,
+  generator,
 } from "@/public/assets";
 
 export const navLinks = [
   {
     name: "About",
     dropdown: [
-          { name: "Services", path: "/#services" },
-          { name: "Process", path: "/#process" },
-          { name: "Tech", path: "/#tech" },
-      ],
+      { name: "Services", path: "/#services" },
+      { name: "Process", path: "/#process" },
+      { name: "Tech", path: "/#tech" },
+    ],
   },
   {
     name: "Projects",
@@ -54,34 +54,53 @@ export const TECHNOLOGIES = [
 export const steps = [
   {
     title: "Strategy Advice",
-    description: "I provide an initial consultation where we assess your project requirements and collaboratively develop initial concepts.",
+    description:
+      "I provide an initial consultation where we assess your project requirements and collaboratively develop initial concepts.",
     icon: phone,
     date: "Step 1",
   },
   {
     title: "Your Personalized Cost Estimate",
-    description: "Shortly after, you'll receive a personalized cost estimate tailored to your project's specific requirements. My offers are modular, giving you the flexibility to adjust the scope as needed.",
+    description:
+      "Shortly after, you'll receive a personalized cost estimate tailored to your project's specific requirements. My offers are modular, giving you the flexibility to adjust the scope as needed.",
     icon: graphic,
     date: "Step 2",
   },
   {
     title: "Realizing Your Online Presence",
-    description: "Once the details are agreed upon, I begin the development phase. I meticulously code your responsive website or online shop to meet your specific needs. Throughout the process, I perform quality assurance checks to ensure your online presence exceeds performance standards and your expectations.",
+    description:
+      "Once the details are agreed upon, I begin the development phase. I meticulously code your responsive website or online shop to meet your specific needs. Throughout the process, I perform quality assurance checks to ensure your online presence exceeds performance standards and your expectations.",
     icon: develop,
     date: "Step 3",
   },
   {
     title: "Deploying Your Website",
-    description: "Upon project completion, we will conduct a comprehensive review of the results together, implementing any final changes as needed. The success of your website unfolds with the seamless transfer from my development server to your live server. Rest assured, I remain fully committed to supporting you throughout the entire process.",
+    description:
+      "Upon project completion, we will conduct a comprehensive review of the results together, implementing any final changes as needed. The success of your website unfolds with the seamless transfer from my development server to your live server. Rest assured, I remain fully committed to supporting you throughout the entire process.",
     icon: done,
     date: "Step 4",
   },
-
 ];
 
 export const projects = [
   {
-    index: 0,
+    index: 3,
+    name: "AI-Image Generator",
+    description:
+      "An simple AI-powered image generation platform where users can create stunning images from text prompts, with up to 10 free generations per day. Built with Next.js, TypeScript, PostgreSQL and integrated with a custom image generation API.",
+    technologies: ["NextJs", "TypeScript", "TailwindCSS", "React"],
+    image: generator,
+    source_code_link: "https://img-generator-mauve.vercel.app",
+    linkIcon: link,
+    tags: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "TailwindCSS" },
+    ],
+    projectType: "P", // "P" for Personal Project
+  },
+  {
+    index: 2,
     name: "Varcendom",
     description:
       "A simple landing page built with Next.js that showcases a range of heat pumps and air conditioners for sale.",
@@ -89,7 +108,12 @@ export const projects = [
     image: varcendom,
     source_code_link: "https://www.varcendom.si",
     linkIcon: link,
-    tags: [{ name: "Next.js" }, { name: "TypeScript" }, { name: "TailwindCSS" }],
+    tags: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "TailwindCSS" },
+    ],
+    projectType: "C", // "C" for Client Project
   },
   {
     index: 1,
@@ -101,9 +125,10 @@ export const projects = [
     source_code_link: "https://vilalisjak.com",
     linkIcon: link,
     tags: [{ name: "HTML" }, { name: "JavaScript" }, { name: "Bootstrap" }],
+    projectType: "C", // "C" for Client Project
   },
   {
-    index: 2,
+    index: 0,
     name: "Boxa Travel",
     description:
       "Boxatravel is a Web 3.0-based travel booking engine that supports crypto payments. It was a startup I founded a few years ago that unfortunately didn't have the chance to take off. Currently, the code is publicly available on GitHub and may be used for personal purposes ONLY.",
@@ -112,5 +137,6 @@ export const projects = [
     source_code_link: "https://github.com/RobertViorel/Boxa-Travel",
     linkIcon: github,
     tags: [{ name: "PHP" }, { name: "MySQL" }, { name: "Bootstrap" }],
+    projectType: "P", // "P" for Personal Project
   },
 ];
