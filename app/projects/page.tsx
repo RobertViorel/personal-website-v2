@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   return (
     <div className="relative w-full overflow-auto">
       <StarsCanvas />
-      <div className="relative container mx-auto z-10">
+      <div className="relative container mx-auto z-10 mt-20">
         <FilterProjects onFilter={setFilterTech} />
         <ProjectsList filterTech={filterTech} />
       </div>
