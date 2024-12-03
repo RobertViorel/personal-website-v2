@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   const [filterTech, setFilterTech] = useState<string>("All");
 
   return (
-    <div className="relative w-full overflow-auto">
+    <div className="relative w-full h-full overflow-auto">
       <StarsCanvas />
       <div className="relative container mx-auto z-10 mt-20">
         <FilterProjects onFilter={setFilterTech} />

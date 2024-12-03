@@ -38,7 +38,7 @@ export function ProjectsList({ filterTech }: { filterTech: string }) {
             />
           ))
         ) : (
-          <div className="container mx-auto my-12 col-span-full text-center ">
+          <div className="container mx-auto my-12 col-span-full text-center">
             <h2 className="text-2xl font-bold font-mono text-primary">
               Oops! 🚧
             </h2>
