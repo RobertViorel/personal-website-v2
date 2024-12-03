@@ -84,7 +84,7 @@ export const steps = [
 
 export const projects = [
   {
-    index: 3,
+    index: 0,
     name: "AI-Image Generator",
     description:
       "An simple AI-powered image generation platform where users can create stunning images from text prompts, with up to 10 free generations per day. Built with Next.js, TypeScript, PostgreSQL and integrated with a custom image generation API.",
@@ -100,7 +100,7 @@ export const projects = [
     projectType: "P", // "P" for Personal Project
   },
   {
-    index: 2,
+    index: 1,
     name: "Varcendom",
     description:
       "A simple landing page built with Next.js that showcases a range of heat pumps and air conditioners for sale.",
@@ -116,7 +116,7 @@ export const projects = [
     projectType: "C", // "C" for Client Project
   },
   {
-    index: 1,
+    index: 2,
     name: "Vila Lisjak",
     description:
       "Vila Lisjak is a beautifully designed building featuring seven luxurious apartments available for short-term rentals. I developed the website for Vila Lisjak using HTML, CSS, JavaScript, and Bootstrap, ensuring a seamless and user-friendly experience for visitors.",
@@ -128,7 +128,7 @@ export const projects = [
     projectType: "C", // "C" for Client Project
   },
   {
-    index: 0,
+    index: 3,
     name: "Boxa Travel",
     description:
       "Boxatravel is a Web 3.0-based travel booking engine that supports crypto payments. It was a startup I founded a few years ago that unfortunately didn't have the chance to take off. Currently, the code is publicly available on GitHub and may be used for personal purposes ONLY.",
